@@ -1,7 +1,7 @@
-# PosterGen Server
+# Express Template
 
 ## 项目概述
-基于Express.js构建，提供海报生成、数据持久化和API接口功能。核心特性包括统一响应处理和MySQL数据库集成。
+Express的基础模板
 
 ## 技术栈
 - **框架**: Express.js
