@@ -15,4 +15,6 @@ module.exports = {
         INTERNAL_SERVER_ERROR: 500, // 内部服务器错误
     },
 
+    // 定义用于加密和解密的 secret 密钥
+    SECRET_KEY:'your-secret-key',
 }
