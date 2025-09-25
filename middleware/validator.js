@@ -18,15 +18,25 @@ module.exports = (name) => {
             throw new Error('校验规则必须是一个数组');
         }
 
-        const executeRules = validatorModule.validationRules.map(rule => {
-            return new Promise((resolve) => {
-                rule(req, res, (err) => {
-                    resolve(err);
-                });
-            });
-        });
 
-        await Promise.all(executeRules);
+        for (const validation of validatorModule.validationRules) {
+
+            await new Promise((resolve,reject) => {
+                validation(req, res, (err) => {
+                    if (err) {
+                        reject(err);
+                    }else{
+                        resolve();
+                    }
+                });
+            })
+
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                break
+            }
+        }
+
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
